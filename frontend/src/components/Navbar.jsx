@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="flex items-center justify-between px-8 py-6" style={{backgroundColor: '#FFEDE9'}}>
-      <div className="text-2xl font-bold text-gray-900">HealthMate</div>
+    <nav className="font-inter flex items-center justify-between px-8 py-0" style={{backgroundColor: '#FFF7F5'}}>
+      <div className="w-1/2  text-2xl font-bold text-gray-900">HealthMate</div>
       
-      <div className="hidden md:flex items-center space-x-10">
+      <div className="w-1/2  items-start justify-start px-24 py-10 hidden md:flex space-x-10"> 
         <Link 
           to="/" 
           className="font-medium transition-colors"
@@ -50,10 +50,10 @@ const Navbar = () => {
 
       <Link 
         to="/login"
-        className="text-white px-6 py-2 rounded-full font-medium transition-colors"
-        style={{backgroundColor: '#FF7B6E'}}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#FF6B5E'}
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#FF7B6E'}
+        className="text-white px-6 py-3 items-center justify-center w-[165px] h-[50px] text-[18px]  rounded-full font-medium  transition-colors"
+        style={{
+          background: 'linear-gradient(to bottom, #FF6B3D 0%, #FF7B6E 100%)'
+        }}
       >
         Login/Register
       </Link>
