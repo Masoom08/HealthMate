@@ -1,14 +1,24 @@
-import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import SignUp from './pages/Signup';
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h2 className='font-inter font-semibold text-2xl'>HealthMate</h2>
-      <div>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 '>Click Me</button>
-      </div>
-    </div>
-  )
-}
 
+    
+    <Router>
+     {/* Add Toaster here so it works globally */}
+      <Toaster position="top-right" reverseOrder={false} />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+
+         </Routes>
+    </Router>
+  );
+}
 export default App;
