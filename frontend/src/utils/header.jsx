@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Header = ({ scrollToService }) => {
+const Header = ({ scrollToService,hideLogin  }) => {
   return (
     <nav
       className="font-inter flex items-center justify-between px-8 py-0"
@@ -47,7 +47,7 @@ const Header = ({ scrollToService }) => {
             }`
           }
         >
-          Contact Us
+          Contact
         </NavLink>
 
         <NavLink
@@ -62,15 +62,17 @@ const Header = ({ scrollToService }) => {
         </NavLink>
       </div>
 
-      <NavLink
-        to="/login"
-        className="text-white px-6 py-3 items-center justify-center w-[165px] h-[50px] text-[18px] rounded-full font-medium transition-colors"
-        style={{
-          background: "linear-gradient(to bottom, #FF6B3D 0%, #FF7B6E 100%)",
-        }}
-      >
-        Login/Register
-      </NavLink>
+      {!hideLogin && (
+        <NavLink
+          to="/login"
+          className="text-white px-6 py-3 items-center justify-center w-[165px] h-[50px] text-[18px] rounded-full font-medium transition-colors"
+          style={{
+            background: "linear-gradient(to bottom, #FF6B3D 0%, #FF7B6E 100%)",
+          }}
+        >
+          Login/Register
+        </NavLink>
+      )}
     </nav>
   );
 };

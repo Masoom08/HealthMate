@@ -2,7 +2,7 @@ import React from 'react';
 import {
   ArrowRight,
  } from 'lucide-react';
-import logo from '../../assets/img/black-healthmate-logo.png';
+import logo from '../../assets/img/logo/black-logo.png';
 
 const Hero = () => {
     return (

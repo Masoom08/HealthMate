@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/img/black-healthmate-logo.png';
+import logo from '../../assets/img/logo/black-logo.png';
 
 const Contact = () => {
     return (

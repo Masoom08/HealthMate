@@ -5,6 +5,7 @@ import Service from '../../components/Home/Services';
 import Stats from '../../components/Home/Stats';
 import Newsletter from '../../components/Home/Newsletter';
 import Footer from '../../utils/footer';
+import SearchHeader from '../../utils/search_header';
 
 const Home = () => {
   const serviceRef = useRef(null);
