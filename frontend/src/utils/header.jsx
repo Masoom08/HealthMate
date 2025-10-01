@@ -1,7 +1,6 @@
-// src/components/Navbar.jsx
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Header = () => {
   return (
     <nav
       className="font-inter flex items-center justify-between px-8 py-0"
@@ -34,14 +33,14 @@ const Navbar = () => {
         </NavLink>
 
         <NavLink
-          to="/tests"
+          to="/services"
           className={({ isActive }) =>
             `font-medium transition-colors ${
               isActive ? "text-[#FF7B6E]" : "text-gray-900 hover:text-[#FF7B6E]"
             }`
           }
         >
-          Tests
+          Services
         </NavLink>
 
         <NavLink
@@ -80,4 +79,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

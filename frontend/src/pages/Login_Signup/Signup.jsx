@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 
 import { Link } from "react-router-dom";
-import Navbar from '../components/Navbar'
+import Navbar from '../../components/Navbar'
 
 
 const SignUp = () => {
