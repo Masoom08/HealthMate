@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef }  from 'react';
 import Header from '../../utils/header';
 import Hero from '../../components/Home/Hero';
 import Service from '../../components/Home/Services';
@@ -7,11 +7,17 @@ import Newsletter from '../../components/Home/Newsletter';
 import Footer from '../../utils/footer';
 
 const Home = () => {
+  const serviceRef = useRef(null);
+
+  const scrollToService = () => {
+    serviceRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="font-inter min-h-screen bg-white">
-      <Header />
-      <Hero />
-      <Service />
+      <Header scrollToService={scrollToService}/>
+      <Hero  />
+      <Service ref={serviceRef} />
       <Stats />
       <Newsletter/>
       <Footer/>

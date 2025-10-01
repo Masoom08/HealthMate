@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ scrollToService }) => {
   return (
     <nav
       className="font-inter flex items-center justify-between px-8 py-0"
@@ -21,6 +21,13 @@ const Header = () => {
           Home
         </NavLink>
 
+        <button
+           onClick={scrollToService}
+          className="font-medium text-gray-900 hover:text-[#FF7B6E] transition-colors"
+        >
+          Services
+        </button>
+
         <NavLink
           to="/about"
           className={({ isActive }) =>
@@ -30,17 +37,6 @@ const Header = () => {
           }
         >
           About
-        </NavLink>
-
-        <NavLink
-          to="/services"
-          className={({ isActive }) =>
-            `font-medium transition-colors ${
-              isActive ? "text-[#FF7B6E]" : "text-gray-900 hover:text-[#FF7B6E]"
-            }`
-          }
-        >
-          Services
         </NavLink>
 
         <NavLink

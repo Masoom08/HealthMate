@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,forwardRef } from 'react';
 import physicalHealthImg from '../../assets/img/service/physical.png';
 import mentalHealthImg from '../../assets/img/service/mental.png';
 import aiHealthImg from '../../assets/img/service/ai.png';
@@ -7,7 +7,7 @@ import hospitalImg from '../../assets/img/service/locator.png';
 import preventiveImg from '../../assets/img/service/symptoms.png';
 import moodJournalImg from '../../assets/img/service/journal.png';
 
-const Service = ()=> {
+const Service = forwardRef((props, ref)=> {
   const [activeCard, setActiveCard] = useState(null);
 
   const handleCardClick = (index) => {
@@ -53,7 +53,7 @@ const Service = ()=> {
   ];
 
   return (
-    <section className="px-8 py-20 bg-white ml-56 mr-56 mt-8">
+    <section ref={ref} className="px-8 py-20 bg-white ml-56 mr-56 mt-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-start mb-24 ">
           <p 
@@ -142,6 +142,6 @@ const Service = ()=> {
       </div>
     </section>
   );
-};
+});
 
 export default Service;
