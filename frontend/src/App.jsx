@@ -6,6 +6,7 @@ import SignUp from './pages/Login_Signup/Signup';
 import About from './pages/Home/About';
 import Contact from './pages/Home/Contact';
 import Physical from './pages/Physical/Physical';
+import HospitalLocator from './pages/Hospital_locator/Hospital_locator';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/physical" element={<Physical/>}/>
+        <Route path="/hospital-locator" element={<HospitalLocator />} />
       </Routes>
     </Router>
   );
