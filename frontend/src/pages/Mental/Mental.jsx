@@ -1,10 +1,10 @@
 import React, { useRef }  from 'react';
-import Hero from '../../components/Physical/Hero.jsx';
+import Hero from '../../components/Mental/Hero.jsx';
 import Progress from '../../components/Physical/Progress.jsx';
 import WorkoutPlans from '../../components/Physical/Workout.jsx';
 import SearchHeader from '../../utils/search_header';
 
-const Physical = () => {
+const Mental = () => {
   const serviceRef = useRef(null);
 
   const scrollToService = () => {
@@ -14,7 +14,6 @@ const Physical = () => {
   return (
     <div className="font-inter min-h-screen bg-white">
       <SearchHeader />
-      
       <Hero  />
       <Progress/>
       <WorkoutPlans />
@@ -25,4 +24,4 @@ const Physical = () => {
   );
 };
 
-export default Physical;
+export default Mental;

@@ -1,4 +1,6 @@
 import React, { useState ,forwardRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import physicalHealthImg from '../../assets/img/service/physical.png';
 import mentalHealthImg from '../../assets/img/service/mental.png';
 import aiHealthImg from '../../assets/img/service/ai.png';
@@ -9,21 +11,29 @@ import moodJournalImg from '../../assets/img/service/journal.png';
 
 const Service = forwardRef((props, ref)=> {
   const [activeCard, setActiveCard] = useState(null);
+  const navigate = useNavigate();
+
 
   const handleCardClick = (index) => {
-        setActiveCard(activeCard === index ? null : index);
+    setActiveCard(index);
+    const selectedService = services[index];
+    if (selectedService?.path) {
+      navigate(selectedService.path);
+    }
   };
 
   const services = [
       {
         icon: <img src={physicalHealthImg} alt="Physical Health" className="w-16 h-16" />,
         title: "Physical Health",
-        description: "Explore symptoms, cures, and preventive care tailored to you"
+        description: "Explore symptoms, cures, and preventive care tailored to you",
+        path: "/physical"
       },
       {
         icon: <img src={mentalHealthImg} alt="Mental Health" className="w-16 h-16" />,
         title: "Mental Health",
-        description: "Calm your mind with guided exercises and real-time support"
+        description: "Calm your mind with guided exercises and real-time support",
+        path: "/mental"
       },
       {
         icon: <img src={aiHealthImg} alt="AI Health Assistant" className="w-16 h-16" />,
@@ -38,7 +48,8 @@ const Service = forwardRef((props, ref)=> {
       {
         icon: <img src={hospitalImg} alt="Hospital Locator" className="w-16 h-16" />,
         title: "Hospital Locator",
-        description: "Find the right care, at the right place, at the right time."
+        description: "Find the right care, at the right place, at the right time.",
+        path: "/hospital-locator"
       },
       {
         icon: <img src={preventiveImg} alt="Preventive Care" className="w-16 h-16" />,

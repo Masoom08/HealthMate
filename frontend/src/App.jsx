@@ -11,6 +11,7 @@ import ForgetPassword from './pages/Login_Signup/ForgetPassword';
 import ResetPassword from './pages/Login_Signup/ResetPassword';
 import NewPassword from './pages/Login_Signup/NewPassword';
 import PasswordResetSuccess from './pages/Login_Signup/PasswordResetSuccess';
+import Mental from './pages/Mental/Mental';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword/>}/>
         <Route path="/new-password" element={<NewPassword/>}/>
         <Route path="/password-reset-success" element={<PasswordResetSuccess/>}/>
+        <Route path="/mental" element={<Mental/>}/>
       </Routes>
     </Router>
   );
