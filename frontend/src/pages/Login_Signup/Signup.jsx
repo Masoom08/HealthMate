@@ -6,7 +6,7 @@ import Welcome from '../../components/Login_Signup/Welcome';
 const SignUp = () => {
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#FFEDE9'}}>
+    <div className="min-h-screen" style={{backgroundColor: '#FFF7F5'}}>
       <Header hideLogin={true}/>
 
       <div className="flex h-[calc(100vh-80px)]">

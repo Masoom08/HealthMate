@@ -2,7 +2,7 @@ import React from 'react';
 
 const Welcome = ()=> {
     return (
-        <div className="h-full flex items-start justify-start text-white p-16 pt-24 relative z-10">
+        <div className="h-auto flex items-start justify-start text-white p-16 pt-24 relative z-10">
             <div className="text-left">
               <h2 className="text-6xl font-extrabold mb-4 leading-tight">
                 Welcome to<br />

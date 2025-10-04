@@ -14,12 +14,12 @@ const LoginForm = () => {
   return (
     <div className="w-full max-w-md">
         <h1 className="text-4xl font-bold text-gray-900 mb-1">Login</h1>
-        <p className="text-gray-700 mb-8 font-medium">Enter your account details</p>
+        <p className="text-gray-700 mb-8 font-medium py-3">Enter your account details</p>
 
         <div className="space-y-6">
             {/* Email Field */}
             <div>
-                <label className="block text-sm font-semibold text-gray-800 mb-2">
+                <label className="block text-md font-semibold text-gray-800 mb-2">
                   Email
                 </label>
                 <input
@@ -33,7 +33,7 @@ const LoginForm = () => {
 
             {/* Password Field */}
             <div className="relative">
-                <label className="block text-sm font-semibold text-gray-800 mb-2">
+                <label className="block text-md font-semibold text-gray-800 mb-2">
                   Password
                 </label>
                 <div className="relative">
@@ -62,16 +62,20 @@ const LoginForm = () => {
             <button
                 type="button"
                 className="w-full text-black py-3 rounded-lg font-semibold transition-colors shadow-sm"
-                style={{backgroundColor: '#FF7B6E'}}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#FF6B5E'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#FF7B6E'}
-            >
+                style={{
+            background: 'linear-gradient(to right, #FF6B3D, #FF7B6E)',
+            transition: 'opacity 0.3s'
+          }}
+          onMouseEnter={(e) => e.target.style.opacity = '0.9'}
+          onMouseLeave={(e) => e.target.style.opacity = '1'}
+        >
                 Login
             </button>
-
+            
+            
             {/* Forgot Password */}
             <div className="text-center">
-                <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-900 hover:underline">
+                <a href="/forget-password" className="text-sm font-medium text-gray-700 hover:text-gray-900 hover:underline">
                   Forgot Password?
                 </a>
             </div>
@@ -97,11 +101,14 @@ const LoginForm = () => {
   
                 <Link 
                 to="/signup"
-                className="text-white px-5 py-2 rounded-lg font-semibold transition-colors"
-                style={{ backgroundColor: '#FF7B6E' }}
-                onMouseEnter={(e) => e.target.style.backgroundColor = '#FF6B5E'}
-                onMouseLeave={(e) => e.target.style.backgroundColor = '#FF7B6E'}
-                >
+                className="text-white px-5 py-2 rounded-lg font-inter transition-colors"
+                style={{
+            background: 'linear-gradient(to bottom, #FF6B3D, #FF7B6E)',
+            transition: 'opacity 0.3s'
+          }}
+          onMouseEnter={(e) => e.target.style.opacity = '0.9'}
+          onMouseLeave={(e) => e.target.style.opacity = '1'}
+        >
                     Sign up
                 </Link>
             </div>
