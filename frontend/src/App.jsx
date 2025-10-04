@@ -6,6 +6,10 @@ import SignUp from './pages/Login_Signup/Signup';
 import About from './pages/Home/About';
 import Contact from './pages/Home/Contact';
 import Physical from './pages/Physical/Physical';
+import ForgetPassword from './pages/Login_Signup/ForgetPassword';
+import ResetPassword from './pages/Login_Signup/ResetPassword';
+import NewPassword from './pages/Login_Signup/NewPassword';
+import PasswordResetSuccess from './pages/Login_Signup/PasswordResetSuccess';
 
 function App() {
   return (
@@ -19,6 +23,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/physical" element={<Physical/>}/>
+        <Route path="/forget-password" element={<ForgetPassword/>}/>
+        <Route path="/reset-password" element={<ResetPassword/>}/>
+        <Route path="/new-password" element={<NewPassword/>}/>
+        <Route path="/password-reset-success" element={<PasswordResetSuccess/>}/>
       </Routes>
     </Router>
   );
