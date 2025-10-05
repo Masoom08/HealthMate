@@ -42,7 +42,6 @@ const Service = forwardRef((props, ref)=> {
     }
   ];
 
-
   return (
     <section ref={ref} className="px-8 py-8 bg-white ml-56 mr-56 mt-8">
       <div className="max-w-7xl mx-auto">

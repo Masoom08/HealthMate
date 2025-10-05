@@ -12,6 +12,8 @@ import ResetPassword from './pages/Login_Signup/ResetPassword';
 import NewPassword from './pages/Login_Signup/NewPassword';
 import PasswordResetSuccess from './pages/Login_Signup/PasswordResetSuccess';
 import Mental from './pages/Mental/Mental';
+import Mood from './pages/Mood/mood';
+import Journel from './pages/Mood/journel';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
         <Route path="/new-password" element={<NewPassword/>}/>
         <Route path="/password-reset-success" element={<PasswordResetSuccess/>}/>
         <Route path="/mental" element={<Mental/>}/>
+        <Route path="/mood"element={<Mood/>}/>
+        <Route path="mood/journel"element={<Journel/>}/>
       </Routes>
     </Router>
   );

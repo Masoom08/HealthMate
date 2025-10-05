@@ -2,7 +2,7 @@ import React,{useStae} from 'react';
 
 const Stats = () => {
     return (
-      <section className="px-8 py-20 text-white w-[1600px] h-[600px]" 
+      <section className="px-8 py-20 text-white -[600px]" 
             style={{ backgroundColor: '#FF7B6E' }}
         >
         <div className="max-w-7xl mx-auto mt-36">
