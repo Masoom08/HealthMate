@@ -1,8 +1,24 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect  } from "react";
 
-export default function WordLikeEditor() {
-  const [pages, setPages] = useState([""]); // Store text for each page
+export default function WordLikeEditor({ value, onChange }) {
+  const [pages, setPages] = useState(value ? [value] : [""]);
   const pageRefs = useRef([]);
+
+   useEffect(() => {
+    // set initial content into divs when value changes
+    pages.forEach((_, i) => {
+      const el = pageRefs.current[i];
+      if (el && el.innerText !== (pages[i] || "")) {
+        el.innerText = pages[i] || "";
+      }
+    });
+  }, [pages]);
+
+  useEffect(() => {
+    if (value !== pages.join("\n")) {
+      setPages([value || ""]);
+    }
+  }, [value]);
 
   const handleInput = (index, e) => {
     const newPages = [...pages];
@@ -12,17 +28,33 @@ export default function WordLikeEditor() {
     // Check if content overflows the current page
     const el = pageRefs.current[index];
     if (el && el.scrollHeight > el.clientHeight) {
-      // If overflow, create a new page if not already
       if (index === pages.length - 1) {
         setPages([...newPages, ""]);
+        setTimeout(() => {
+          const newPageEl = pageRefs.current[index + 1];
+          if (newPageEl) {
+            newPageEl.focus();
+            const range = document.createRange();
+            range.setStart(newPageEl, 0);
+            range.collapse(true);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }
+        }, 0);
+        return;
       }
     }
+
+    setPages(newPages);
+    onChange(newPages.join("\n")); 
   };
 
   return (
     <div >
-      {pages.map((content, i) => (
+      {pages.map((_, i) => (
         <div
+        key={i}
   ref={(el) => (pageRefs.current[i] = el)}
   contentEditable
   suppressContentEditableWarning
