@@ -43,7 +43,8 @@ const Service = forwardRef((props, ref)=> {
       {
         icon: <img src={emergencyImg} alt="Emergency Support" className="w-16 h-16" />,
         title: "Emergency Support",
-        description: "Help is just one click away—because every second matters."
+        description: "Help is just one click away—because every second matters.",
+        path: "/emergency"
       },
       {
         icon: <img src={hospitalImg} alt="Hospital Locator" className="w-16 h-16" />,
