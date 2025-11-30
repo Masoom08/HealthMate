@@ -55,7 +55,8 @@ const Service = forwardRef((props, ref)=> {
       {
         icon: <img src={preventiveImg} alt="Preventive Care" className="w-16 h-16" />,
         title: "Preventive Care",
-        description: "The gradual accumulation of information about"
+        description: "The gradual accumulation of information about",
+        path: "/preventive"
       },
       {
         icon: <img src={moodJournalImg} alt="Mood Journal" className="w-16 h-16" />,

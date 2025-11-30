@@ -15,6 +15,7 @@ import Mental from './pages/Mental/Mental';
 import Mood from './pages/Mood/mood';
 import Journel from './pages/Mood/journel';
 import Emergency from './pages/Emergency/Emergency';
+import Preventive from './pages/Preventive/Preventive';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/mood"element={<Mood/>}/>
         <Route path="mood/journel"element={<Journel/>}/>
         <Route path="/emergency" element={<Emergency/>}/>
+        <Route path="/preventive" element={<Preventive/>}/>
       </Routes>
     </Router>
   );
