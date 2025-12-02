@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { User, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Profile = ({ trigger }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleToggle = () => setOpen((prev) => !prev);
 
@@ -19,8 +22,9 @@ const Profile = ({ trigger }) => {
   }, []);
 
   const handleSignOut = () => {
-    console.log("Signing out...");
-    // Add your sign-out logic here
+    localStorage.removeItem("token");        // Clear auth
+    toast.success("Signed out successfully"); // Popup toast
+    navigate("/login");                      // Redirect
   };
 
   return (

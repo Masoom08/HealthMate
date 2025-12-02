@@ -1,47 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import headerIcon from "../../assets/img/emergency/imgheader.png";
 
 const Support = () => {
-  const columns = [
-    {
-      title: "Mental Health Support",
-      items: [
-        { number: "9152987821", label: "Crisis Helpline" },
-        { number: "08046110007", label: "Vandrevala Foundation" },
-        { number: "09820466726", label: "AASRA Suicide Prevention" },
-        { number: "08041790000", label: "Sneha India" },
-        { number: "18001805353", label: "iCall Psychosocial Helpline" },
-      ],
-    },
+  const [columns, setColumns] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    {
-      title: "Physical Health Emergency",
-      items: [
-        { number: "108", label: "National Ambulance Service" },
-        { number: "102", label: "Medical Helpline" },
-        { number: "1075", label: "COVID-19 Helpline" },
-        { number: "104", label: "National Health Portal" },
-        { number: "1800-180-1104", label: "Health Insurance Support" },
-      ],
-    },
+  // Fetching helpline data from backend
+  useEffect(() => {
+    const fetchHelplines = async () => {
+      try {
+        const res = await fetch("https://healthmate-evbq.onrender.com/helpline/");
+        const data = await res.json();
 
-    {
-      title: "Specialized Care",
-      items: [
-        { number: "1098", label: "Child Helpline" },
-        { number: "181", label: "Women Helpline" },
-        { number: "1800-116-117", label: "Poison Control Center" },
-        { number: "14567", label: "Anti-Trafficking Helpline" },
-        { number: "1800-233-3330", label: "Senior Citizen Helpline" },
-      ],
-    },
-  ];
+        // Convert backend structure into UI-compatible structure
+        const formatted = data.categories.map((category) => ({
+          title: category.category,
+          items: category.helplines.map((h) => ({
+            number: h.number,
+            label: h.title,
+          })),
+        }));
+
+        setColumns(formatted);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to load helpline data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchHelplines();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center py-20 text-gray-600 text-lg">
+        Loading helplines...
+      </div>
+    );
+  }
 
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-8">
-       
-
         {/* Heading */}
         <div className="mb-10">
           <p

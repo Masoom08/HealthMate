@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 const Header = ({ scrollToService,hideLogin  }) => {
+  const isLoggedIn = !!localStorage.getItem("token");
   return (
     <nav
       className="font-inter flex items-center justify-between px-8 py-0"
@@ -62,7 +63,7 @@ const Header = ({ scrollToService,hideLogin  }) => {
         </NavLink>
       </div>
 
-      {!hideLogin && (
+      {!isLoggedIn && (
         <NavLink
           to="/login"
           className="text-white px-6 py-3 items-center justify-center w-[165px] h-[50px] text-[18px] rounded-full font-medium transition-colors"

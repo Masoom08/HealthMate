@@ -16,6 +16,7 @@ import Mood from './pages/Mood/mood';
 import Journel from './pages/Mood/journel';
 import Emergency from './pages/Emergency/Emergency';
 import Preventive from './pages/Preventive/Preventive';
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
@@ -28,17 +29,18 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/physical" element={<Physical/>}/>
-        <Route path="/hospital-locator" element={<HospitalLocator />} />
         <Route path="/forget-password" element={<ForgetPassword/>}/>
         <Route path="/reset-password" element={<ResetPassword/>}/>
         <Route path="/new-password" element={<NewPassword/>}/>
         <Route path="/password-reset-success" element={<PasswordResetSuccess/>}/>
-        <Route path="/mental" element={<Mental/>}/>
-        <Route path="/mood"element={<Mood/>}/>
-        <Route path="mood/journel"element={<Journel/>}/>
-        <Route path="/emergency" element={<Emergency/>}/>
-        <Route path="/preventive" element={<Preventive/>}/>
+
+        <Route path="/physical" element={<ProtectedRoute><Physical/></ProtectedRoute> }/>
+        <Route path="/hospital-locator" element={<ProtectedRoute><HospitalLocator /></ProtectedRoute> } />
+        <Route path="/mental" element={<ProtectedRoute><Mental/></ProtectedRoute>}/>
+        <Route path="/mood"element={<ProtectedRoute><Mood/></ProtectedRoute>}/>
+        <Route path="mood/journel"element={<ProtectedRoute><Journel/></ProtectedRoute>}/>
+        <Route path="/emergency" element={<ProtectedRoute><Emergency/></ProtectedRoute>}/>
+        <Route path="/preventive" element={<ProtectedRoute><Preventive/></ProtectedRoute>}/>
       </Routes>
     </Router>
   );
