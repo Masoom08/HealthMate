@@ -1,4 +1,4 @@
-const HelplineCategory =require("../models/HelplineCategory.js");
+const HelplineCategory =require("../models/Emergency/HelplineCategory");
 
 exports.getHelplines = async (req, res) => {
   try {

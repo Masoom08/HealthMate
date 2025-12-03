@@ -1,4 +1,4 @@
-const EmergencyTip = require("../models/EmergencyTips");
+const EmergencyTip = require("../models/Emergency/EmergencyTips");
 
 exports.getEmergencyTips = async (req, res) => {
   try {
