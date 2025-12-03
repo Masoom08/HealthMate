@@ -32,36 +32,88 @@ export default function MoodMainContent() {
     return { title, description };
   };
 
-  const handlePost = () => {
+  // const handlePost = () => {
+  //   if (!content.trim()) {
+  //     alert("Please write something before posting.");
+  //     return;
+  //   }
+
+  //   const { title, description } = extractLines(content);
+  //   const stored = JSON.parse(localStorage.getItem("moodEntries") || "[]");
+
+  //   const newEntry = {
+  //     title,
+  //     description,
+  //     date: new Date().toLocaleDateString("en-US", {
+  //       month: "short",
+  //       day: "numeric",
+  //       year: "numeric",
+  //     }),
+  //     mood,
+  //     moodColor:
+  //       mood === "Happy"
+  //         ? "bg-yellow-100 text-yellow-700"
+  //         : mood === "Excited"
+  //         ? "bg-green-100 text-green-700"
+  //         : mood === "Sad"
+  //         ? "bg-pink-100 text-pink-700"
+  //         : "bg-gray-100 text-gray-700",
+  //   };
+
+  //   localStorage.setItem("moodEntries", JSON.stringify([newEntry, ...stored]));
+  //   navigate("/mood");
+  // };
+
+  const handlePost = async () => {
     if (!content.trim()) {
       alert("Please write something before posting.");
       return;
     }
 
     const { title, description } = extractLines(content);
-    const stored = JSON.parse(localStorage.getItem("moodEntries") || "[]");
 
-    const newEntry = {
-      title,
-      description,
-      date: new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
-      mood,
-      moodColor:
-        mood === "Happy"
-          ? "bg-yellow-100 text-yellow-700"
-          : mood === "Excited"
-          ? "bg-green-100 text-green-700"
-          : mood === "Sad"
-          ? "bg-pink-100 text-pink-700"
-          : "bg-gray-100 text-gray-700",
+    // Get JWT token from localStorage/sessionStorage
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You must be logged in to post a journal.");
+      return;
+    }
+
+    const payload = {
+      heading: title,
+      content: description,
+      tags: [mood.toLowerCase()],
+      typography: {
+        bold: false,
+        italic: false,
+        underline: false,
+        fontStyle: "Arial",
+        fontSize: 16,
+      },
     };
 
-    localStorage.setItem("moodEntries", JSON.stringify([newEntry, ...stored]));
-    navigate("/mood");
+    try {
+      const res = await fetch("http://localhost:5000/journals/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // <-- send JWT
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Journal posted successfully!");
+        navigate("/mood"); // redirect to mood dashboard or list page
+      } else {
+        alert("Error posting journal: " + data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to post journal. Check console for details.");
+    }
   };
 
   const handleCancel = () => {
