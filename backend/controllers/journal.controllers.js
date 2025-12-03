@@ -6,7 +6,7 @@ exports.createJournal = async (req, res) => {
     const { user_id, heading, content, tags, typography } = req.body;
 
     const journal = await Journal.create({
-      user_id,
+      user_id: req.user.id,
       heading,
       content,
       tags,
@@ -23,7 +23,7 @@ exports.createJournal = async (req, res) => {
 exports.getUserJournals = async (req, res) => {
   try {
     const journals = await Journal.find({
-      user_id: req.params.userId,
+      user_id: req.user.id,
       is_deleted: false
     }).sort({ created_at: -1 });
 
@@ -38,6 +38,7 @@ exports.getJournalById = async (req, res) => {
   try {
     const journal = await Journal.findOne({
       _id: req.params.id,
+      user_id: req.user.id,
       is_deleted: false
     });
 
@@ -53,10 +54,12 @@ exports.getJournalById = async (req, res) => {
 exports.updateJournal = async (req, res) => {
   try {
     const journal = await Journal.findByIdAndUpdate(
-      req.params.id,
+      { _id: req.params.id, user_id: req.user.id },
       { ...req.body },
       { new: true }
     );
+
+    if (!journal) return res.status(404).json({ message: "Journal not found" });
 
     res.status(200).json({ success: true, journal });
   } catch (error) {
@@ -67,7 +70,11 @@ exports.updateJournal = async (req, res) => {
 /** Soft Delete Journal */
 exports.deleteJournal = async (req, res) => {
   try {
-    await Journal.findByIdAndUpdate(req.params.id, { is_deleted: true });
+    await Journal.findByIdAndUpdate(
+      { _id: req.params.id, user_id: req.user.id },
+      { is_deleted: true });
+
+    if (!Journal) return res.status(404).json({ message: "Journal not found" });
 
     res.status(200).json({ success: true, message: "Journal deleted" });
   } catch (error) {
